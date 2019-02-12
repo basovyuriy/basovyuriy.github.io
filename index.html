@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://sundog-education.com/spark-scala/ -->
+<html lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns#" class="csstransforms csstransforms3d csstransitions flexbox requestanimationframe raf page-trans-loaded"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="https://sundog-education.com/wp-content/uploads/2016/02/K-1.png" type="image/x-icon">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">   
+<title>Apache Spark with Scala - Hands On with Big Data! Getting Started - Spark, Hadoop, and Data Science Training</title>
+<!-- This site is optimized with the Yoast SEO plugin v9.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://sundog-education.com/spark-scala/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Spark with Scala - Hands On with Big Data! Getting Started - Spark, Hadoop, and Data Science Training">
+<meta property="og:description" content="Join the Community If you’re on Facebook, we invite you to join the Facebook Group for this course! It’s a great way to connect with and collaborate with fellow students. You’ll find it at https://www.facebook.com/groups/1026867157456171/ Course Materials The scripts and data for this course may be downloaded at http://media.sundog-soft.com/SparkScala/SparkScala.zip – you’ll need this in the...">
+<meta property="og:url" content="https://sundog-education.com/spark-scala/">
+<meta property="og:site_name" content="Spark, Hadoop, and Data Science Training">
+<meta property="article:publisher" content="https://www.facebook.com/frank.kane.90226">
+<meta property="og:image" content="http://sundog-education.com/wp-content/uploads/2017/07/SignUp.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Join the Community If you’re on Facebook, we invite you to join the Facebook Group for this course! It’s a great way to connect with and collaborate with fellow students. You’ll find it at https://www.facebook.com/groups/1026867157456171/ Course Materials The scripts and data for this course may be downloaded at http://media.sundog-soft.com/SparkScala/SparkScala.zip – you’ll need this in the...">
+<meta name="twitter:title" content="Apache Spark with Scala - Hands On with Big Data! Getting Started - Spark, Hadoop, and Data Science Training">
+<meta name="twitter:site" content="@SundogSoftware">
+<meta name="twitter:image" content="http://sundog-education.com/wp-content/uploads/2017/07/SignUp.png">
+<meta name="twitter:creator" content="@SundogSoftware">
+<!-- / Yoast SEO plugin. -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Spark, Hadoop, and Data Science Training » Feed" href="https://sundog-education.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Spark, Hadoop, and Data Science Training » Comments Feed" href="https://sundog-education.com/comments/feed/">
+<script type="text/javascript" async="" src="./index_files/analytics.js.Без названия"></script><script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/sundog-education.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+</script><script src="./index_files/wp-emoji-release.min.js.Без названия" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+display: inline !important;
+border: none !important;
+box-shadow: none !important;
+height: 1em !important;
+width: 1em !important;
+margin: 0 .07em !important;
+vertical-align: -0.1em !important;
+background: none !important;
+padding: 0 !important;
+}
+</style>
+<!-- <link rel='stylesheet' id='layerslider-css'  href='https://sundog-education.com/wp-content/plugins/LayerSlider/static/layerslider/css/layerslider.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='wp-block-library-css'  href='https://sundog-education.com/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='contact-form-7-css'  href='https://sundog-education.com/wp-content/plugins/contact-form-7/includes/css/styles.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='rs-plugin-settings-css'  href='https://sundog-education.com/wp-content/plugins/revslider/public/assets/css/settings.css' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="./index_files/fu53d.css" media="all">
+<style id="rs-plugin-settings-inline-css" type="text/css">
+#rs-demo-id {}
+</style>
+<style id="woocommerce-inline-inline-css" type="text/css">
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<!-- <link rel='stylesheet' id='creativo-style-css'  href='https://sundog-education.com/wp-content/themes/creativo/style.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='fontawesome-css'  href='https://sundog-education.com/wp-content/themes/creativo/css/fontawesome/css/font-awesome.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='icomoon-css'  href='https://sundog-education.com/wp-content/themes/creativo/css/customfonts/css/style.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='responsive-css'  href='https://sundog-education.com/wp-content/themes/creativo/css/responsive.css' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="./index_files/3wlu9.css" media="all">
+<link rel="stylesheet" id="google-fonts-css" href="./index_files/css" type="text/css" media="all">
+<!-- <link rel='stylesheet' id='vc_style-css'  href='https://sundog-education.com/wp-content/themes/creativo/css/vc_style.min.css' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="./index_files/3wlu9(1).css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var LS_Meta = {"v":"6.7.6"};
+/* ]]> */
+</script>
+<script src="./index_files/3wlua.js.Без названия" type="text/javascript"></script>
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/LayerSlider/static/layerslider/js/greensock.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-includes/js/jquery/jquery.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-includes/js/jquery/jquery-migrate.min.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.kreaturamedia.jquery.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.transitions.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js'></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/sundog-education.com","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script src="./index_files/3wlu9.js.Без названия" type="text/javascript"></script>
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js'></script> -->
+<!-- <script type='text/javascript' src='https://sundog-education.com/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js'></script> -->
+<meta name="generator" content="Powered by LayerSlider 6.7.6 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress.">
+<!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
+<link rel="https://api.w.org/" href="https://sundog-education.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sundog-education.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://sundog-education.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.0.3">
+<meta name="generator" content="WooCommerce 3.5.4">
+<link rel="shortlink" href="https://sundog-education.com/?p=166">
+<link rel="alternate" type="application/json+oembed" href="https://sundog-education.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsundog-education.com%2Fspark-scala%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://sundog-education.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsundog-education.com%2Fspark-scala%2F&amp;format=xml">
+<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://sundog-education.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Powered by Slider Revolution 5.4.8.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface.">
+<link rel="icon" href="https://sundog-education.com/wp-content/uploads/2018/09/cropped-SundogSq-32x32.png" sizes="32x32">
+<link rel="icon" href="https://sundog-education.com/wp-content/uploads/2018/09/cropped-SundogSq-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://sundog-education.com/wp-content/uploads/2018/09/cropped-SundogSq-180x180.png">
+<meta name="msapplication-TileImage" content="https://sundog-education.com/wp-content/uploads/2018/09/cropped-SundogSq-270x270.png">
+<script type="text/javascript">function setREVStartSize(e){									
+try{ e.c=jQuery(e.c);var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})					
+}catch(d){console.log("Failure at Presize of Slider:"+d)}						
+};</script>
+<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript> 
+<style type="text/css">
+body,.more,.meta .date,.review blockquote q,.review blockquote div strong,.footer-areah3,.image .image-extras .image-extras-content h4,.project-content .project-info h4,.post-content blockquote,input, textarea, keygen, select, button{font-family:"Montserrat", Arial, Helvetica, sans-serif;font-size:14px;line-height: 26px;font-weight: 300;letter-spacing: 0px;}.load_symbol .minimal_icon .bar {border-color: #40a168;}#branding .text, #branding .tagline, .side_logo .text, .side_logo .tagline {font-family: "Montserrat", Arial, Helvetica, sans-serif;}#branding .text, .side_logo .text {font-size: 24px;font-weight: 300;}body {color: #444444;background-color: #ffffff}.content_box_title span.white {color: #444444;}#navigation .has-mega-menu ul.twitter li i {color: #444444;}h1, h2, h3, h4, h5:not(.navi_heading), h6,.content_box_title span.grey, .bellow_header_title,.qbox_title1,.content_box_title span.white,.full .title,.tab-holder .tabs li,.post_grid_category{font-family: "Poppins", Arial, Helvetica, sans-serif;}h1, h2, h3, h4, h5, h6, .blogpost .post-content h1, .blogpost .post-content h2, .blogpost .post-content h3, .blogpost .post-content h4, .blogpost .post-content h5, .blogpost .post-content h6 {font-weight: 500;margin-bottom: 10px;}h1, .post-content h1, h1, .blogpost .post-content h1 {font-size: 36px;}h2, .post-content h2, .blogpost .post-content h2 {font-size: 26px;}h3, .post-content h3, .blogpost .post-content h3 {font-size: 22px;}h4, .post-content h4, .blogpost .post-content h4 {font-size: 18px;}h5, .post-content h5, .blogpost .post-content h5 {font-size: 14px;}h6, .post-content h6, .blogpost .post-content h6 {font-size: 12px;}p, .post-content p {margin-bottom: 20px;}h3.sidebar-title {font-family: "Montserrat", Arial, Helvetica, sans-serif;font-size: 18px;}.featured_post h2 {font-family: "Montserrat", Arial, Helvetica, sans-serif;}.woocommerce h1,.woocommerce h2,.woocommerce h3,.woocommerce h4,.woocommerce h5 {font-family: "Poppins", Arial, Helvetica, sans-serif;}h3.footer-widget-title {font-family: "Montserrat", Arial, Helvetica, sans-serif;}#top-menu {font-family: "Montserrat", Arial, Helvetica, sans-serif;font-size: 12px;}.button, .wpcf7-submit, .mc4wp-form input[type=submit] {font-family: "Montserrat", Arial, Helvetica, sans-serif}.top_contact {font-size: 12px;}#top-menu li a {color: #999999;}#top-menu li a:hover {color: #f9c142;}.page-title h1, .page-title h2, .page-title h3, .page-title h4, .page-title h5, .page-title h6, .page-title div:not(.breadcrumb), .page-title p {font-size: 26px;}.page-title h3.subhead {font-size: 13px;}#top-menu > li {border-color: #f2f2f2;}#navigation {font-family: "Montserrat", Arial, Helvetica, sans-serif;}.tp-bannertimer {background-image:none !important;height:7px;}.latest-posts h2, .page-title{font-family:"Montserrat", Arial, Helvetica, sans-serif;}.container {background-color: #ffffff;}.bellow_header {display: none;height: 0px;}a,.front_widget a, .vc_front_widget a, h5.toggle a.default_color,.portfolio-navigation a:hover,h2.page404,.project-feed .title a,.post_meta li a:hover, .portfolio-item .portfolio_details a, .product_feature .pf_content a.more_info:hover, a.woocommerce_orders:hover, .portfolio-navigation a{color:#dd9933;}#navigation .has-mega-menu ul.twitter li a, #navigation .has-mega-menu .contact ul li a, #navigation .has-mega-menu .latest-posts a {color:#dd9933 !important;}a:hover, .col h3 a:hover,.col h4 a:hover, h5.toggle a.default_color:hover, .portfolio-item .portfolio_details a:hover, .product_feature .pf_content a.more_info, a.woocommerce_orders, .cart-collaterals .cart_totals table tr.order-total td, .woocommerce table.shop_table tfoot tr.order-total td, .portfolio-navigation a:hover, .woocommerce-MyAccount-navigation ul li.is-active a:before {color: #5c5c5c;}.woocommerce-MyAccount-navigation ul li.is-active a:before {background-color: #5c5c5c;}#navigation .has-mega-menu ul.twitter li a:hover, #navigation .has-mega-menu .contact ul li a:hover, #navigation .has-mega-menu .latest-posts a:hover {color: #5c5c5c !important;background-color:transparent;}.post-gallery-item a:hover img, .recent-portfolio a:hover img, .recent-flickr a:hover img{border-color:; }.default_dc{color:#dd9933;}#bbpress-forums li.bbp-header, .bbpress.single #bbpress-forums div.bbp-reply-header,#bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current a,#bbpress-forums #bbp-single-user-details #bbp-user-navigation a:hover,#bbpress-forums #bbp-search-results .bbp-topic-header {background-color: #5c5c5c;}.bbp-pagination-links a:hover, .bbp-pagination-links span.current, .bbp-topic-pagination a {background-color: #5c5c5c;border-color: #5c5c5c;} .bbp-topic-pagination a:hover {border-color: #5c5c5c;}#bbpress-forums li.bbp-header, .bbpress.single #bbpress-forums div.bbp-reply-header, span.bbp-admin-links a, .bbp-reply-header a.bbp-reply-permalink, span.bbp-admin-links, #bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current a,#bbpress-forums #bbp-single-user-details #bbp-user-navigation a:hover,#bbpress-forums #bbp-user-body .bbp-header .bbp-topic-permalink,#bbpress-forums #bbp-search-results .bbp-topic-header,#bbpress-forums #bbp-search-results .bbp-topic-header a,#bbpress-forums #bbp-search-results .bbp-forum-header,#bbpress-forums #bbp-search-results .bbp-forum-header a{color: #ffffff;}.reading-box.default_border {background-color: #5c5c5c;color: #ffffff;}.reading-box.default_border:hover {background-color: #2d2d2d;color: #ffffff;}.reading-box.default_border .button {border-color: #ffffff;color: #ffffff;}.reading-box.default_border:hover .button {border-color: #ffffff;color: #ffffff;}.gallery_zoom{background-color: #f9c142;}.vc_front_widget {background-color: #ffffff;}.vc_front_widget a{color: #f9c142;}.vc_front_widget:hover {background-color: #5c5c5c;color:#fff;}.vc_front_widget:hover a{color:#fff;}#tribe-bar-form .tribe-bar-submit input[type=submit],.single-tribe_events .tribe-events-schedule .tribe-events-cost,#tribe-events .tribe-events-button, .tribe-events-button,#tribe-events-content .tribe-events-tooltip h4 {background-color: #f9c142;}.tribe-events-calendar thead th {background-color: #f9c142;border-color: #f9c142;}.event-right a {color: #f9c142;}#tribe-events .tribe-events-button, #tribe_events_filters_wrapper input[type=submit], .tribe-events-button, .tribe-events-button.tribe-inactive, .tribe-events-calendar td.tribe-events-present div[id*=tribe-events-daynum-], .tribe-events-calendar td.tribe-events-present div[id*=tribe-events-daynum-]>a {background-color: #f9c142;}@media screen and (max-width: 768px) {#tribe-events-content .tribe-events-calendar td.tribe-events-has-events.mobile-trigger, .tribe-events-calendar td.tribe-events-has-events.mobile-trigger div[id*=tribe-events-daynum-], .tribe-events-calendar td.tribe-events-has-events.mobile-trigger div[id*=tribe-events-daynum-] a {background-color: #f9c142;;}.tribe-events-calendar td.tribe-events-present div[id*=tribe-events-daynum-] {background-color:#666;}}.progress-bar-content,.ch-info-back4,.ch-info-back3,.ch-info-back2,.ch-info-back1,.col:hover .bottom,.tp-bannertimer,.review_inside:after, .flex-direction-nav a:hover, figure.effect-zoe figcaption {background-color:#f9c142;}.front_widget:hover, .front_widget:hover a, .portfolio-tabs a:hover, .portfolio-tabs li.active a{color:#fff; background-color:#f9c142;}.portfolio-tabs.filters_modern li.active a {border-bottom-color: #f9c142;}._border:hover, .review blockquote q, .pagination a.inactive, .recent-flickr a:hover img{border-color:#f9c142;}.review blockquote div {color:#f9c142;}.pagination .current, .pagination a.inactive:hover {background-color:#f9c142; border-color:#f9c142;}.project-feed .info, figure a .text-overlay, figure.event_image_list .text-overlay {background: rgba(0,0,0,0.70);}.recent_posts_container figure a .text-overlay .info i, .project-feed a i, .blogpost figure a .text-overlay i,.event_calendar_wrap figure a .text-overlay .info i {background-color: #f9c142;color: #fff;}.border_default{border: 1px solid #000000;}.button_default, .button, .tp-caption a.button, .button_default.style_3d:hover, input[type=submit], input[type=submit]:focus {background-color: #f9c142;border-color: #f9c142;color: #444444;font-size: 14px;font-weight: 400;line-height: ;border-radius: 50px;-webkit-border-radius: 50px;}.button_default:hover, .button:hover, .tp-caption a.button:hover{background-color: #ffffff;border-color: #2d2d2d;color: #444444;}.button_default.style_3d {box-shadow: 0 5px 0 #c79a35;-webkit-box-shadow: 0 5px 0 #c79a35;}.footer_widget_content a, .footer_widget_content ul.twitter li span a, ul.twitter li i{color:#f9c142 ;}.footer_widget_content a:hover, .footer_widget_content ul.twitter li span a:hover {color: #ffffff;}.container {}.portfolio-tabs.filters_modern li.active a {color: #000000;}.portfolio-tabs.filters_modern li a {color: #9b9b9b;}.modern_overlay_effect {background-color: rgba(255,255,255, 1);}figure.modern_portfolio_layout h3 a {font-size: 17px;color: #9e9e9e;font-weight: ;}figure.modern_portfolio_layout span.portfolio_categ_list a {font-size: 17px;color: #4e5ee9;}.project-content h1, .project-content h2, .sp_title_desc h2.sp_title {color: ;}.project-content.full_desc .project-description, .sp_title_desc .sp_description {color: ;}.project-info-box, .single .portfolio-modern .portfolio-misc-info h3, .single .portfolio-modern .project-info-details span {color: ;}.project-info-box a, .single .portfolio-modern .project-info-details span a {color: ;}.project-content.full_desc .date, .portfolio-navigation, .project-info-box {border-color: ;}.content_box_title:after, .content_box_title:before {background-color: ;}.portfolio-misc-info .social_ic_margin, .portfolio-modern .get_social li a {border-color: ;}#container .project-content .get_social li a, .portfolio-modern .get_social li a {background-color: ;color: }.content_box_title span.white, .single .portfolio-modern .related_posts_title {color: ;}.project-content .date {color: ;}.single .portfolio-modern .portfolio-misc-info {background-color: ;}.single .portfolio-modern .social_icons .share_text {color: ;}.row_full, .design_modern .modern_heading_title_wrap {max-width: 1170px;}.inner, .row, .front_page_in,.footer_widget_inside,.footer .inner, .top_nav, .bellow_header_title, .inner_wrap,.qbox, .action_bar_inner, .reviews .flexslider, #footer_widget_inside, .flexslider, .reading-box .cta_inside {max-width:1170px;}.second_navi_inner {width: 1170px;}.qbox_title1{width:34%;}.portfolio-four .portfolio-item{margin:4px;}.col{max-width:none;}.portfolio-three .portfolio-item {width:358px;}.portfolio-3 {width: 358px;height: 255px;}.portfolio-two .portfolio-item {width: 550px;}.portfolio-2 {width: 550px;height: 353px;}.ch-info .ch-info-back3 {-webkit-transform: translate3d(0,0,-358px) rotate3d(1,0,0,90deg);-moz-transform: translate3d(0,0,-358px) rotate3d(1,0,0,90deg);-o-transform: translate3d(0,0,-358px) rotate3d(1,0,0,90deg);-ms-transform: translate3d(0,0,-358px) rotate3d(1,0,0,90deg);transform: translate3d(0,0,-358px) rotate3d(1,0,0,90deg);opacity: 0;}.ch-item:hover .ch-info-front3 {-webkit-transform: translate3d(0,358px,0) rotate3d(1,0,0,-90deg);-moz-transform: translate3d(0,358px,0) rotate3d(1,0,0,-90deg);-o-transform: translate3d(0,358px,0) rotate3d(1,0,0,-90deg);-ms-transform: translate3d(0,358px,0) rotate3d(1,0,0,-90deg);transform: translate3d(0,358px,0) rotate3d(1,0,0,-90deg);opacity: 0;}.ch-info .ch-info-back2 {-webkit-transform: translate3d(0,0,-550px) rotate3d(1,0,0,90deg);-moz-transform: translate3d(0,0,-550px) rotate3d(1,0,0,90deg);-o-transform: translate3d(0,0,-550px) rotate3d(1,0,0,90deg);-ms-transform: translate3d(0,0,-550px) rotate3d(1,0,0,90deg);transform: translate3d(0,0,-550px) rotate3d(1,0,0,90deg);opacity: 0;}.ch-item:hover .ch-info-front2 {-webkit-transform: translate3d(0,550px,0) rotate3d(1,0,0,-90deg);-moz-transform: translate3d(0,550px,0) rotate3d(1,0,0,-90deg);-o-transform: translate3d(0,550px,0) rotate3d(1,0,0,-90deg);-ms-transform: translate3d(0,550px,0) rotate3d(1,0,0,-90deg);transform: translate3d(0,550px,0) rotate3d(1,0,0,-90deg);opacity: 0;}.header{margin-bottom: 0px;margin-top: 0px;padding-bottom: 0px;padding-top: 0px;background-color:#ffffff;}.social_icons_wrap .top_social {background-color: #ffffff;}.single-post .post_container .blogpost, .page-template-default .post_container {}.single-post .post_container .blogpost {padding: 0px;box-sizing: border-box;}.design_modern .share_with_tags {margin-top: 0px;}.page-template-page-blog .container,.page-template-page-blog-small .container,.page-template-page-blog-grid .container, .page-template-page-blog-masonry .container,.single-post .container {}.post_container {width: 67%;}.sidebar {width: 30%;}.post_meta li.category_output {font-size: 11px;}.post-content.archive, .sm_images .post-content, .blogpost_small_desc .post-content, .related_post_item .related_post_description{color: ;font-size: px;line-height: ;}.blogpost.layout_modern .content_wrapper {}.blogpost.layout_modern {padding-bottom: 40px;margin-bottom: 40px;}.blogpost_small_pic {width: 42%;}.blogpost_small_desc {width: 53%;padding: 0px;box-sizing:border-box;-webkit-box-sizing:border-box;}.sm_images.layout_modern {padding-bottom: 50px;background-color: ;margin-bottom: 0;}.sm_images.layout_modern, .blogpost.archive_pages.featured_post {padding-bottom: 50px;margin-bottom: 50px;border-bottom: 1px solid #dddddd;}.blogpost .singlepost_title, .modern_heading_title .singlepost_title{font-size: 30px;font-weight: 500;line-height: 1.3;color: #444444;}.blogpost .archives_title{font-size: 20px;font-weight: 500;line-height: 1.3;}.single-post .post_container, .single-post .modern_title_not_featured .post_meta li {color: #444444;}.single-post .post_container .post-content a {color: #f9c142;text-decoration: underline;}.single-post .post_container .post-content a:hover {color: #000000;text-decoration: none;}.single-post .post_meta li {color: #999999;}.single-post .post_meta li a {color: #f9c142;}.small_read_more a{ color: #000000;}.small_read_more a:hover{ color: #000000;}.modern_layout.view_more_button {color: #000000;font-weight: 500;}.modern_layout.view_more_button:hover {color: #000000;}.button.button_default.view_more_button {background-color: #f9c142;border-color: #f9c142;color: #000000;}.button.button_default.view_more_button:hover {background-color: #ffffff;border-color: #2d2d2d;color: #000000;}.post_meta li {font-size: 11px;color: #b5b8bf;}.post_meta li a {color: #f9c142;}.post_meta li a:hover {color: #444444;}.post_meta li i {display: none;}.single .post-content {column-count: ;-webkit-column-count: ;-moz-column-count: ;column-gap: 40px;margin-bottom:30px;}.post_meta, .blogpost .archives_title {text-align: left;}.post_container .get_social li a, .post_container_full .get_social li a,.portfolio-modern .get_social li a{color: ;}.single_post_tags a {font-size: 11px;}.sidebar .get_social li a {color: ;background-color: ;}.col h4, .related_posts .description h3 {font-size: 13px;}.sidebar-widget {margin-bottom: 60px;padding: 25px;background-color: ;color: #ffffff;font-size: 12px;border: 1px solid #efefef;}.sidebar-widget a {color: ;font-size: 12px;font-weight: normal;}.sidebar-widget a:hover {color: ;}.sidebar-widget ul li {border-bottom: 1px solid #e3e3e5;margin-bottom:10px;padding-bottom:10px;}.sidebar-widget ul li:last-child {border: none;margin-bottom: 0;padding-bottom: 0;}.about_me_heading {font-size: 14px;}.about_me_description {font-size: 13px;}.sidebar-widget ul.twitter li i {color: ;}.sidebar-widget .contact ul li i {color: ;}.latest-posts h2 {font-size: 13px;}.latest-posts span {font-size: 11px;}input[type=text], input[type=email], input[type=password], input[type=search],input[type=tel], textarea,input:focus, textarea:focus {border-color: #ccc;background-color: ;color: #b2b2b6;}h3.sidebar-title {color: #21252b;font-weight: 600;margin-bottom: 20px;}h3.sidebar-title:after {border-color: #ececec;border-width: 0px;}.mc4wp-form {background-color: ;padding: 20px 20px;}.mc4wp-form label {font-size: 13px;color: ;font-style: normal;margin-bottom: 5px;}.mc4wp-form input[type=text], .mc4wp-form input[type=email], .mc4wp-form input[type=password], .mc4wp-form textarea {font-size: 13px;color: ;background-color: ;border: 1px solid ;}.mc4wp-form input[type=text]::-webkit-input-placeholder, .mc4wp-form input[type=email]::-webkit-input-placeholder, .mc4wp-form textarea::-webkit-input-placeholder {color: ;}.mc4wp-form input[type=submit] {background-color: #f9c142;border: none;color: #444444;}.mc4wp-form input[type=submit]:hover {background-color: #4c4c4c;color: #444444}.sidebar-widget ul li {padding-left:0;}.sidebar-widget ul li:before {content: initial;}.bbpress .post_container {width: 67%;float: left;}.bbpress .sidebar {display: initial;}.pi-header-row-fixed .header {background-color: rgba(255,255,255, 1);}@media screen and (max-width: 830px) {.pi-header-row-fixed .header {background-color: #ffffff;}}.flex-direction-nav a, .flex-direction-nav a:hover {background-color:transparent;}.flex-direction-nav a {width:50px;height:50px;font-size:40px;margin-top: -25px;}.flex-direction-nav a i {line-height:50px;}#navigation ul.sub-menu li > a {min-width: 165px;box-sizing:border-box;}.main-navigation {float:right;}#navigation {font-size: 12px;}#navigation ul.sub-menu li > a {font-size: 12px;line-height: 35px;height: 35px;}#navigation ul li a, body #navigation input[type=text], .additional_icons a, .social_icons_wrap span.sharer,body #navigation form:not(.woo_submit_form) input[type=text] {color:#21252b;}#navigation input[type=text]::-webkit-input-placeholder,body #navigation form:not(.woo_submit_form) input[type=text]::-webkit-input-placeholder {color:#21252b;}#navigation ul li a {padding: 0 17px;}#navigation > ul, .additional_icons > ul {line-height: 50px;height: 50px;}.logo_separator {height: 50px;margin-left: 30px;margin-right: 10px;background-color: #444444}#navigation > ul > li > a:hover, #navigation > ul li:hover > a, #navigation ul li li:hover > a, #navigation > ul > li.current-menu-item > a, #navigation > ul > li.current-menu-parent > ul > li.current-menu-item > a, #one_page_navigation a.active_menu_item {color:#999999 ;}#navigation li.has-mega-menu > ul.sub-menu, #navigation ul ul, .shopping_cart_items {border-color: #5c5c5c;border-width: 3px;}.shopping_cart_items:before {background-color: #5c5c5c;}#navigation > ul > li > a {font-weight: 500;}#navigation > ul > li > a:hover, #navigation > ul li:hover > a, #navigation ul li.current-menu-parent a, #navigation ul li.current-menu-ancestor a,#navigation > ul > li.current-menu-item > a {background-color: #none;}#navigation ul.sub-menu li > a {padding: 0 18px;}#navigation ul.sub-menu li > a, #navigation.custom_menu_color ul.sub-menu li > a {color: #666666 ;background-color:#ffffff; }#navigation ul.sub-menu li > a:hover, #navigation ul.sub-menu > li:hover > a {color: #ffffff ;background-color:#5c5c5c;}#navigation > ul > li.current-menu-parent > ul > li.current-menu-item > a {color: #ffffff ;}#navigation > ul > li.current-menu-parent > ul > li.current-menu-item > a {background-color: #5c5c5c;}#navigation ul ul, #navigation ul ul li {background-color:#ffffff;}#navigation ul.sub-menu li {border-bottom-color: #f4f4f4;}.extra_header_button {height: 50px;line-height: 50px;}.extra_header_button a {background-color: #f9c142;color: #000000;font-size: 11px;font-weight: 500;}.header .inner {width:100%;box-sizing:border-box;}@media screen and (min-width: 1125px){.header .inner {padding: 0px;}}#branding, #navigation {float: none;display:block;}#navigation ul {text-align: left;}#navigation ul li {float: none;display: inline-block;}.additional_icons {display: block;float: none;max-width: none;}.additional_icons ul {line-height: 50px;height: 50px;transition: height .3s ease-in-out, line-height .3s ease-in-out;-webkit-transition: height .3s ease-in-out, line-height .3s ease-in-out;display:block;border-left: 1px solid #444444;}.additional_icons ul li:first-child {padding-left:10px;}#header_search_wrap {text-align:center;width:40px;}#header_search_wrap a {}#header_search_wrap a i {position:relative;}#navigation ul li.header_search_li, #navigation ul li.responsive-item, .additional_icons ul li.responsive-item,.additional_icons ul li.header_search_li {display: none;}@media screen and (max-width: 830px) {.responsive-item {display: none !important;}}#navigation .has-mega-menu .megamenu-title, #navigation .has-mega-menu .megamenu-title a {color: #444444;font-size: 14px;font-weight: normal;}#navigation .has-mega-menu .megamenu-title a:hover {color: #5c5c5c;}#navigation .has-mega-menu ul.sub-menu li > a{color: #ffffff;background-color: transparent;}#navigation .has-mega-menu ul.sub-menu li > a:hover{color: #5c5c5c;}.footer {background-color: #ffffff;}.footer_ii_wrap {background-color: ;}.footer_ii_wrap i {display: block;font-size: 30px;color: #dddddd;}.footer .instagram_footer_title {padding-top: 10px;padding-bottom: 10px;color: #ffffff;background-color: ;display: block;font-size: 15px;}.footer .instagram_footer_title a, .footer .instagram_footer_title a:hover {color: #ffffff;}.footer_widget {background: url("https://sundog-education.com/wp-content/themes/creativo/images/pattern/pattern21.png") repeat;background-color: #222326;border-top-color: #2e343a;border-bottom-color: #2e343a;}.footer_widget_content {font-size: 14px;}.copyright, .footer_navigation {font-size: 13px;}h3.footer-widget-title {color: #ffffff;font-size: 16px;font-weight: 600;letter-spacing: 0px;}.recent-flickr a img {border-color: #454c54;}footer .inner {border-top: 1px solid #e2e2e2;}.footer_widget_content {color: #ffffff;}.copyright {color: #999999;}.footer .copyright a {color: #f9c142;}.footer .copyright a:hover {color: #222222;}#footer_widget_inside {padding-top: 15px;}#gotoTop {background-color: #444;}#gotoTop:hover {background-color: #5c5c5c;}.bellow_header{background-color:#f8f8f8;}.bellow_header_title, .page-title .breadcrumb, .page-title .breadcrumb a {color: #4d4d4d;}#branding .logo, .side_logo img, #branding .text_logo {padding-top:10px;padding-bottom:10px;padding-left:0px;padding-right:0px;}.shortcode_img img{max-width: 32px;height:auto;position: relative;top: 50%;margin-top: -16px;}.top_nav .social_icons_wrap .top_social {background-color: #000;}.top_contact .contact_phone, .top_contact .contact_address{border-color: #999999;border-width:1px;border-left-style: dotted;}.separator_left {border-left: 1px dotted #999999; margin-left: 20px;padding-left: 10px;}.separator_right {border-right: 1px dotted #999999; margin-right: 20px;padding-right: 10px;}.top_contact a {color:#999999;}.top_contact a:hover {color:#5c5c5c;}.top_contact {color: #999999;}.single_post_tags a, .single_post_tags a:hover, .woocommerce-pagination ul li span.current, .woocommerce .quantity .minus:hover, .woocommerce .quantity .plus:hover {background-color: #f9c142;border-color: #f9c142;}.woocommerce-pagination ul li {border-color: #f9c142;}.author_box:after, .woocommerce-pagination ul li a:hover, .product .shortcode-tabs .tab-hold .tabs li.active a:after {background-color: #f9c142;}.footer .top_social a {color: #848484;}.image_prod .badge, .product .badge {background-color: #5c5c5c;}.product_price, .product .summary .price {color: #5c5c5c;}.post-content blockquote {border-color: #f9c142;}.responsive-menu-bar {background-color: #f9c142;color: #ffffff;}#responsive_menu li a{background-color: #ffffff;color: #444444;border-top-color: #dddddd;}.responsive-search input[type=submit] {background-color: #333333;color: #ffffff;}#branding .logo a {}.inside_prod { border-color: #e1e1e1}.product_details {background-color: #ffffff;padding: 10px 15px;text-align: left;}.product_details .product_price {color: #5bc98c;font-size: 15px;}.products .product .product_details h3 {font-size: 13px;font-weight: 500;}.products .product .product_details h3 a {color: #333333;}.products .product .product_details h3 a:hover {color: #5bc98c;}.product_details .product_price .price ins{color: #5bc98c;}.product_details .product_price .price del{color: #cccccc;}.image_prod .badge, .product .badge {color: #ffffff;background-color: #5bc98c;}.product .star-rating {color: #444444;}.woocommerce-page .button,.product .tab-container #reviews input#submit {color: #ffffff;background-color: #333333;border-color: #333333;}.woocommerce-page .button:hover,.product .tab-container #reviews input#submit:hover {color: #ffffff;background-color: #555555;border-color: #555555;}.footer_widget_content ul.product_list_widget li a {font-size: 13px;font-weight: 400;color: #ffffff;}.footer_widget_content ul.product_list_widget li ins, .footer_widget_content ul.product_list_widget li .amount {font-size: 14px;font-weight: 600;color: #ffffff}.footer_widget_content ul.product_list_widget li del, .footer_widget_content ul.product_list_widget li del .amount {font-size: 12px;color: #777777}.footer_widget_content ul.cart_list li, .footer_widget_content ul.product_list_widget li {border-color: #eeeeee;}.footer_widget_content .star-rating span {color: #eeeeee;}.products .product-category {transition: all .2s ease-in-out;-webkit-transition: all .2s ease-in-out;}.products .product-category:hover {transform: scale(1.04);-webkit-transform: scale(1.04);}.products .product-category h3 {color: #333333;background-color: #ffffff;font-size: 15px;}.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {background-color: #f5f5f5;}.woocommerce .widget_price_filter .ui-slider .ui-slider-range {background-color: #444444;}.woocommerce .widget_price_filter .price_slider_amount .price_label {color: #333333;}.price_slider_amount .button {color: #ffffff;border-color: #222222;background-color: #222222;}.price_slider_amount .button:hover {color: #ffffff;border-color: #444444;background-color: #444444;}.woocommerce table.shop_table thead tr, .woocommerce-order-received .woocommerce p:first-of-type:not(.woocommerce-customer-details--phone),.woocommerce-order-received .woocommerce header h2, .woocommerce-order-received .woocommerce header.title h3, .woocommerce-view-order .woocommerce header.title h3,.woocommerce header.woocommerce-Address-title h3 {background-color: #333333;color: #ffffff;}a.woocommerce_orders, a.woocommerce_orders:hover {color: #ffffff;}ul.product_list_widget li.mini_cart_item a:not(.remove) {color: #333333;}ul.product_list_widget li.mini_cart_item a:not(.remove):hover {color: #666666;}ul.cart_list li, ul.product_list_widget li, .woocommerce .widget_shopping_cart_content .total {border-color: #eeeeee;}.woocommerce .widget_shopping_cart_content .quantity {color: #333333;}.woocommerce .widget_shopping_cart_content .quantity .amount {color: #f96e5b;}.woocommerce .widget_shopping_cart_content .total {color: #333333;}.woocommerce .widget_shopping_cart_content .total .amount {color: #f96e5b;}.widget_shopping_cart .button {color: #ffffff;border-color: #333333;background-color: #333333;}.widget_shopping_cart .button:hover {color: #333333;border-color: #333333;background-color: #ffffff;}.widget_shopping_cart .button.checkout {color: #333333;border-color: #333333;background-color: #ffffff;}.widget_shopping_cart .button.checkout:hover {color: #ffffff;border-color: #333333;background-color: #333333;}.single-product .product .summary .woo_single_prod_title {font-size: 20px;font-weight: 500;margin:0;text-transform: none;line-height: normal;color: #333333;}.single-product .product .star-rating {color: #fdca00;}.single-product .product .summary .price {color: #222222;font-size: 16px;line-height: normal;}.single-product .product del {color: #ccc;}.single-product .cart .button {color: #ffffff;background-color: #111111;border-color: #111111;margin: 0;border-radius: 0;-webkit-border-radius: 0;}.single-product .cart .button:hover {color: #ffffff;background-color: #333333;border-color: #333333;}.woocommerce .quantity .minus:hover, .woocommerce .quantity .plus:hover {background-color: #333333;border-color: #333333;}.product .shortcode-tabs .tab-hold .tabs li.active a:after {background-color: #333333;}.single .social_icons.vertical_sharing {position: absolute;top: 0;padding-right: 10px;margin-left: -75px;border-right:1px solid #eeeeee;max-width: 55px;box-sizing:border-box;padding-top:0;}.single .social_icons.vertical_sharing .share_text {display: none;}.single .social_icons.vertical_sharing .get_social {list-style: none;padding-left: 0;margin-top: 0;margin-bottom: 0;}.single .social_icons.vertical_sharing .share_text, .single .get_social {float: none;}.single .vertical_sharing .get_social li {display: block;}.single .social_icons.vertical_sharing .share_text {float: none;font-size: 11px;text-align: center;text-transform: uppercase;font-weight: 600;}#navigation > ul, .additional_icons > ul {line-height: 90px;}.blogpost .post-content h3, .blogpost .post-content h4, .blogpost .post-content h5, .blogpost .post-content h6 {padding-top: 20px!important;}.hesperiden.tparrows.tp-rightarrow:before, .hesperiden.tparrows.tp-leftarrow:before {transform: rotateZ(-90deg);-webkit-transform: rotateZ(-90deg);margin-left: 1px;margin-top: 2px;}.hesperiden.tparrows.tp-rightarrow:before {margin-left:-2px;margin-top:0px;}.button_pricing {position: absolute;left: 18px;top: 0;height: 57px;padding-right: 15px;border-right: 1px solid #fff;display: block;line-height: 30px;width: 50px;}span.pricing_price {position: absolute;top: 7px;left: 6px;font-size: 22px;font-weight: 500;}span.pricing_cyle{display: block;font-size: 10px;position: absolute;top: 27px;left: 5px;}.fitness_slider_button {padding-left: 100px !important;}</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./index_files/js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-37067771-3');
+</script>
+</head>
+<body class="page-template-default page page-id-166 page-with-animation woocommerce-js wpb-js-composer js-comp-ver-5.6 vc_responsive closed-nav" data-layout="extra_wide" data-show-landscape="no" sticky-footer="false" sticky-sidebar="true" data-backtop="979">
+<!-- page loading effect -->
+<div id="page_loading_effect" data-disable-mobile="1" data-disable-fade-on-click="0" data-effect="standard" data-method="standard" style="opacity: 0; display: none;"><div class="load_symbol" style="opacity: 0;"><div class="minimal_icon"><div class="spinner"><div class="right-side"><div class="bar"></div></div><div class="left-side"><div class="bar"></div></div></div><div class="spinner color-2"><div class="right-side"><div class="bar"></div></div><div class="left-side"><div class="bar"></div></div></div></div></div></div><!-- side panel usage -->
+<!-- side panel usage end -->
+<div id="container" class="container animsition" data-container-width="0" data-container-pos="top">		
+<div class="full_header business" style="height: 68px;">    
+<div class="header_area sticky_h">
+<header class="header_wrap">        	
+<div class="header " mobile-design="classic" header-version="business" data-centered="no" data-resize="no" resize-factor="0.3" data-transparent="no" logo-resize="no" sticky-mobile-menu="yes">             
+<div class="header_reduced">
+<div class="inner d-flex left navigation_classic">
+<div id="branding">
+<div class="logo " data-custom-logo="false">
+<a href="https://sundog-education.com/" rel="home" title="Spark, Hadoop, and Data Science Training">                                            
+<img src="./index_files/SunDog-Education-LogoHORZ.png" alt="Spark, Hadoop, and Data Science Training" title="Spark, Hadoop, and Data Science Training" class="original_logo  show_logo ">
+</a>
+</div>                   
+</div>
+<div class="logo_separator"></div>
+<nav id="navigation" class="main_menu  clearfix is_visible">                     
+<ul id="menu-main-nav" class="menu clearfix"><li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home no-mega-menu"><a class="menu-item-link " href="https://sundog-education.com/">Courses</a></li>
+<li id="menu-item-430" class="menu-item menu-item-type-post_type menu-item-object-page no-mega-menu"><a class="menu-item-link " href="https://sundog-education.com/books/">Books</a></li>
+<li id="menu-item-404" class="menu-item menu-item-type-post_type menu-item-object-page no-mega-menu"><a class="menu-item-link " href="https://sundog-education.com/about/">About</a></li>
+<li id="menu-item-525" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link " href="https://sundog-education.com/blog/">Blog</a></li>
+</ul>        
+<form action="https://sundog-education.com/" method="get" class="header_search" style="width: 579px;">
+<input type="text" name="s" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+</form>                                        
+</nav>
+<div class="extra_header_button"><a href="http://sundog-education.com/#signup" class="header_button" target="_self">Sign Up for my FREE COURSE!</a></div>
+<div class="additional_icons">
+<ul>												
+<li class="header_menu_social"><div class="social_icons_wrap"><span class="sharer"><i class="icon-share2"></i></span><div class="top_social"><a href="http://www.twitter.com/SundogEducation" class="twitter etip" original-title="Follow on Twitter" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a><a href="./index_files/SundogEdu" class="facebook etip" original-title="Follow on Facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a><a href="https://www.linkedin.com/in/frank-kane-76443417/" class="linkedin etip" original-title="Follow on LinkedIn" target="_blank" rel="nofollow"><i class="fa fa-linkedin"></i></a></div></div></li><li class="header_search_li"><div id="header_search_wrap"><a href="https://sundog-education.com/spark-scala/#" id="header-search"><i class="icon-magnifier"></i><i class="icon-cancel"></i></a></div></li><li class="menu-item-resp responsive-item"><div class="responsive-search"><form action="https://sundog-education.com/spark-scala/" method="get" class="header_search" style="width: 579px;"><input type="text" name="s" class="form-control" value="" placeholder=""><input type="submit" value="GO" class="responsive_search_submit"></form></div></li>	</ul>
+</div> 
+</div>    
+</div>
+</div>   
+</header>
+</div>
+</div> 
+<div id="responsive_navigation">
+<div class="responsive-menu-link">
+<div class="responsive-menu-bar mob_menu">
+Menu            <i class="fa fa-bars"></i>
+</div>
+</div>
+<div class="mobile_menu_holder" style="">    
+<ul id="responsive_menu"><li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-403"><a href="https://sundog-education.com/">Courses</a></li>
+<li id="menu-item-430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-430"><a href="https://sundog-education.com/books/">Books</a></li>
+<li id="menu-item-404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="https://sundog-education.com/about/">About</a></li>
+<li id="menu-item-525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-525"><a href="https://sundog-education.com/blog/">Blog</a></li>
+</ul>                       
+</div>
+</div>
+<div id="wrapper">
+<div class="bellow_header " data-ptb="off" style="">
+<div class="pt_mask">
+<div class="bellow_header_title">
+<div class="page-title">
+<h2>Apache Spark with Scala – Hands On with Big Data! Getting Started</h2> 
+<div class="breadcrumb">
+<ul class="breadcrumbs"><li><a href="https://sundog-education.com/"></a></li><li>Apache Spark with Scala – Hands On with Big Data! Getting Started</li></ul>	                                </div>   
+<div class="breadcrumb_search_form">
+<form method="get" id="searchform" action="https://sundog-education.com/"><fieldset style="border:none;"><input type="text" name="s" id="s" value="Search keywords here" onfocus="if(this.value==&#39;Search keywords here&#39;) this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;)this.value=&#39;Search keywords here&#39;;"></fieldset><!--END #searchform--></form>	                            </div>
+</div>        
+</div>
+</div>        
+</div>
+<div class="row clearfix">
+<div class="post_container">
+<div class="blogpost">
+<div class="post-content">
+<h1>Join the Community</h1>
+<p>If you’re on Facebook, we invite you to join the <a href="https://www.facebook.com/groups/1026867157456171/">Facebook Group for this course</a>! It’s a great way to connect with and collaborate with fellow students. You’ll find it at</p>
+<h4><a href="https://www.facebook.com/groups/1026867157456171/">https://www.facebook.com/groups/1026867157456171/</a></h4>
+<h1>Course Materials</h1>
+<p>The scripts and data for this course may be downloaded at</p>
+<h4><a href="http://media.sundog-soft.com/SparkScala/SparkScala.zip">http://media.sundog-soft.com/SparkScala/SparkScala.zip</a></h4>
+<p>– you’ll need this in the second video lecture of the course.</p>
+<h1>Installing Apache Spark and Scala</h1>
+<h2>Windows: (keep scrolling for MacOS and Linux)</h2>
+<ol>
+<li>Install a JDK (Java Development Kit) from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a> . Keep track of where you installed the JDK; you’ll need that later. <strong>DO NOT INSTALL JAVA 9, 10, or 11 – INSTALL JAVA 8</strong>. Spark is not compatible with Java 9 or greater. And <strong>BE SURE TO INSTALL JAVA TO A PATH WITH NO SPACES IN IT.</strong> Don’t accept the default path that goes into “Program Files” on Windows, as that has a space.</li>
+<li>Download a <strong>pre-built</strong> version of <strong>Apache Spark 2.3 (do not use Spark 2.4; it has a bug and only works with Linux)&nbsp;</strong>from <a href="https://spark.apache.org/downloads.html">https://spark.apache.org/downloads.html</a></li>
+<li>If necessary, download and install WinRAR so you can extract the .tgz file you downloaded. <a href="http://www.rarlab.com/download.htm">http://www.rarlab.com/download.htm</a></li>
+<li>Extract the Spark archive, and copy its <strong>contents</strong> into <strong>C:\spark </strong>after creating that directory. You should end up with directories like c:\spark\bin, c:\spark\conf, etc.</li>
+<li>Download winutils.exe from <a href="https://sundog-spark.s3.amazonaws.com/winutils.exe">https://sundog</a><a href="https://sundog-spark.s3.amazonaws.com/winutils.exe">–</a><a href="https://sundog-spark.s3.amazonaws.com/winutils.exe">s3.amazonaws.com/winutils.exe</a> and move it into a <strong>C:\winutils\bin</strong> folder that you’ve created. (note, this is a 64-bit application. If you are on a 32-bit version of Windows, you’ll need to search for a 32-bit build of winutils.exe for Hadoop.)</li>
+<li>Create a <strong>c:\tmp\hive</strong> directory, and cd into c:\winutils\bin, and run&nbsp;<strong>winutils.exe chmod 777 c:\tmp\hive</strong></li>
+<li>Open the the <strong>c:\spark\conf</strong> folder, and make sure “File Name Extensions” is checked in the “view” tab of Windows Explorer. Rename the log4j.properties.template file to log4j.properties. Edit this file (using Wordpad or something similar) and change the error level from INFO to ERROR for log4j.rootCategory</li>
+<li>Right-click your Windows menu, select Control Panel, System and Security, and then System. Click on “Advanced System Settings” and then the “Environment Variables” button.</li>
+<li>Add the following new USER variables:
+<ol>
+<li>SPARK_HOME c:\spark</li>
+<li>JAVA_HOME (the path you installed the JDK to in step 1, for example C:\ProgramFiles\Java\jdk1.8.0_101)</li>
+<li>HADOOP HOME c:\winutils</li>
+</ol>
+</li>
+<li>Add the following paths to your PATH user variable:</li>
+</ol>
+<p><strong>%SPARK_HOME%\bin </strong></p>
+<p><strong>%JAVA_HOME%\bin</strong></p>
+<ol start="10">
+<li>Close the environment variable screen and the control panels.</li>
+<li>Install the latest <strong>Scala IDE</strong> from <a href="http://scala-ide.org/download/sdk.html">http://scala-ide.org/download/sdk.html</a></li>
+<li>Test it out!
+<ol>
+<li>Open up a Windows command prompt in administrator mode.</li>
+<li>Enter <strong>cd c:\spark</strong> and then <strong>dir</strong> to get a directory listing.</li>
+<li>Look for a text file we can play with, like README.md or CHANGES.txt</li>
+<li>Enter <strong>spark-shell </strong></li>
+<li>At this point you should have a scala&gt; prompt. If not, double check the steps above.</li>
+<li>Enter <strong>val rdd = sc.textFile(“README.md”)</strong> (or whatever text file you’ve found) Enter <strong>rdd.count() </strong></li>
+<li>You should get a count of the number of lines in that file! Congratulations, you just ran your first Spark program!</li>
+<li>Hit <strong>control-D</strong> to exit the spark shell, and close the console window</li>
+<li>You’ve got everything set up! Hooray!</li>
+</ol>
+</li>
+</ol>
+<h2>MacOS</h2>
+<h3>Step 1: Install Spark</h3>
+<h4>Method A: By Hand</h4>
+<p>The best setup instructions for Spark on MacOS are at the following link:</p>
+<p><strong><a href="https://medium.com/luckspark/installing-spark-2-3-0-on-macos-high-sierra-276a127b8b85" target="_blank" rel="noopener">https://medium.com/luckspark/installing-spark-2-3-0-on-macos-high-sierra-276a127b8b85</a></strong></p>
+<h4>Method B: Using Homebrew</h4>
+<p>An alternative on MacOS is using a tool called Homebrew to install Java, Scala, and Spark – but first you need to install Homebrew itself.</p>
+<p>Step by step instructions are at <strong><a href="https://www.tutorialkart.com/apache-spark/how-to-install-spark-on-mac-os/">https://www.tutorialkart.com/apache-spark/how-to-install-spark-on-mac-os/</a></strong></p>
+<h3>Step 2: Install the Scala IDE</h3>
+<p>Install the Scala IDE from <a href="http://scala-org/download/sdk.html">http://scala-org/download/sdk.html</a></p>
+<h3>Step 3: Test it out!</h3>
+<ol>
+<li>cd to the directory apache-spark was installed to and then <strong>ls</strong> to get a directory listing.</li>
+<li>Look for a text file we can play with, like README.md or CHANGES.txt</li>
+<li>Enter <strong>spark-shell </strong></li>
+<li>At this point you should have a scala&gt; prompt. If not, double check the steps above.</li>
+<li>Enter <strong>val rdd = sc.textFile(“README.md”)</strong> (or whatever text file you’ve found) Enter <strong>rdd.count() </strong></li>
+<li>You should get a count of the number of lines in that file! Congratulations, you just ran your first Spark program!</li>
+<li>Hit <strong>control-D</strong> to exit the spark shell, and close the console window</li>
+<li>You’ve got everything set up! Hooray!</li>
+</ol>
+<h2>Linux</h2>
+<ol>
+<li>Install Java 8, Scala, and Spark according to the particulars of your specific OS. A good starting point is <a href="http://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm">http://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm</a>&nbsp;(be sure to install Spark 2.3)</li>
+<li>Install the Scala IDE from <a href="http://scala-ide.org/download/sdk.html">http://scala</a><a href="http://scala-ide.org/download/sdk.html">–</a><a href="http://scala-ide.org/download/sdk.html">org/download/sdk.html</a></li>
+<li>Test it out!
+<ol>
+<li>cd to the directory apache-spark was installed to and then <strong>ls</strong> to get a directory listing.</li>
+<li>Look for a text file we can play with, like README.md or CHANGES.txt</li>
+<li>Enter <strong>spark-shell </strong></li>
+<li>At this point you should have a scala&gt; prompt. If not, double check the steps above.</li>
+<li>Enter <strong>val rdd = sc.textFile(“README.md”)</strong> (or whatever text file you’ve found) Enter <strong>rdd.count() </strong></li>
+<li>You should get a count of the number of lines in that file! Congratulations, you just ran your first Spark program!</li>
+<li>Hit <strong>control-D</strong> to exit the spark shell, and close the console window</li>
+<li>You’ve got everything set up! Hooray!</li>
+</ol>
+</li>
+</ol>
+<h1>Optional: Join Our List</h1>
+<p><a href="http://eepurl.com/cKpc5b" target="_blank" rel="noopener"><img class="alignleft size-full wp-image-122" src="./index_files/SignUp.png" alt="" width="243" height="85" srcset="https://sundog-education.com/wp-content/uploads/2017/07/SignUp.png 243w, https://sundog-education.com/wp-content/uploads/2017/07/SignUp-240x85.png 240w" sizes="(max-width: 243px) 100vw, 243px"></a>Join our low-frequency mailing list to stay informed on new courses and promotions from Sundog Education. As a thank you, we’ll send you a <strong>free course on Deep Learning and Neural Networks with Python</strong>, and <strong>discounts on all of Sundog Education’s other courses!&nbsp;</strong>Just click the button to get started.</p>
+<div class="single_blogpost_split"></div>
+</div>                        
+</div>
+</div>
+<!--BEGIN #sidebar .aside-->
+<div class="sidebar" style="">                
+<div class="sidebar-widget"><div class="title-holder"><h3 class="sidebar-title">Get Social</h3></div>			<div class="textwidget"><div class="fb-page" data-href="https://www.facebook.com/SundogEdu" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+<blockquote class="fb-xfbml-parse-ignore" cite="./index_files/SundogEdu"><p><a href="./index_files/SundogEdu">Follow us on Facebook</a></p>
+<p><a href="https://twitter.com/SundogEducation">Follow us on Twitter</a></p></blockquote>
+</div>
+</div>
+</div><div class="sidebar-widget"><div class="title-holder"><h3 class="sidebar-title">COURSES @ UDEMY.COM</h3></div><div class="menu-courses-at-udemy-com-container"><ul id="menu-courses-at-udemy-com" class="menu"><li id="menu-item-512" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-512"><a href="https://www.udemy.com/autonomous-cars-deep-learning-and-computer-vision-in-python/?couponCode=SELFDRIVING19">Autonomous Cars: Deep Learning and Computer Vision with Python</a></li>
+<li id="menu-item-505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-505"><a href="https://www.udemy.com/building-recommender-systems-with-machine-learning-and-ai/?couponCode=RECSYS19">Building Recommender Systems with Machine Learning and AI</a></li>
+<li id="menu-item-377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-377"><a href="https://www.udemy.com/build-a-serverless-app-with-aws-lambda-hands-on/?couponCode=LAMBDA19">Build a Serverless App with Lambda</a></li>
+<li id="menu-item-378" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-378"><a href="https://www.udemy.com/the-ultimate-hands-on-hadoop-tame-your-big-data/?couponCode=HADOOP19">The Ultimate Hands-on Hadoop</a></li>
+<li id="menu-item-379" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-379"><a href="https://www.udemy.com/build-a-serverless-app-with-aws-lambda-hands-on/?couponCode=LAMBDA19">Data Science, Deep Learning, Machine Learning with Python</a></li>
+<li id="menu-item-380" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-380"><a href="https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on/?couponCode=ELASTIC19">Learn ElasticSearch6 and Elastic Stack</a></li>
+<li id="menu-item-381" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-381"><a href="https://www.udemy.com/apache-spark-with-scala-hands-on-with-big-data/?couponCode=SPARKSCALAWEB">Learn Apache Spark with Scala</a></li>
+<li id="menu-item-382" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-382"><a href="https://www.udemy.com/taming-big-data-with-apache-spark-hands-on/?couponCode=SPARKWEB">Taming Big Data with Apache Spark and Python</a></li>
+<li id="menu-item-383" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-383"><a href="https://www.udemy.com/taming-big-data-with-spark-streaming-hands-on/?couponCode=STREAMINGWEB">Taming Big Data with Spark Streaming and Scala</a></li>
+<li id="menu-item-384" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-384"><a href="https://www.safaribooksonline.com/search/?query=author%3A%22Frank%20Kane%22&amp;sort=relevance&amp;highlight=true">Learn Big Data on AWS / Elastic Mapreduce</a></li>
+<li id="menu-item-547" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-547"><a href="https://www.udemy.com/the-ultimate-unofficial-udemy-online-course-creation-guide/?couponCode=CREATE19">The Ultimate Online Course Creation Guide</a></li>
+</ul></div></div><div class="sidebar-widget"><div class="title-holder"><h3 class="sidebar-title">COURSES @ O’REILLY SAFARI</h3></div><div class="menu-courses-at-oreilly-safari-container"><ul id="menu-courses-at-oreilly-safari" class="menu"><li id="menu-item-385" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-385"><a href="https://www.safaribooksonline.com/library/view/elasticsearch-5-and/9781788995122/">Elasticsearch 5 and Elastic Stack</a></li>
+<li id="menu-item-386" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-386"><a href="https://www.safaribooksonline.com/library/view/the-ultimate-hands-on/9781788478489/">The Ultimate Hands-on Hadoop</a></li>
+<li id="menu-item-387" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-387"><a href="https://www.safaribooksonline.com/library/view/introduction-to-the/9781491985168/">Introduction to the Amazon Elasticsearch Service</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-388"><a href="https://www.safaribooksonline.com/library/view/analyzing-big-data/9781491985144/">Analyzing Big Data with Hadoop, AWS, and EMR</a></li>
+<li id="menu-item-389" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-389"><a href="https://www.safaribooksonline.com/library/view/analyzing-big-data/9781491985120/">Analyzing Big Data with Spark and Amazon EMR</a></li>
+<li id="menu-item-390" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-390"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787129931/">Taming Big Data with Apache Spark and Python</a></li>
+<li id="menu-item-391" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-391"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787123915/">Taming Big Data with Spark Streaming and Scala</a></li>
+<li id="menu-item-392" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-392"><a href="https://www.safaribooksonline.com/library/view/data-science-and/9781787127081/">Data Science and Machine Learning with Python</a></li>
+<li id="menu-item-393" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-393"><a href="https://www.safaribooksonline.com/library/view/apache-spark-with/9781787129849/">Apache Spark with Scala</a></li>
+<li id="menu-item-394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-394"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787125568/">Taming Big Data with MapReduce and Hadoop</a></li>
+<li id="menu-item-395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-395"><a href="https://www.safaribooksonline.com/learning-paths/learning-path-data/9781491995143/">Data Analytics with Amazon’s ElasticMapReduce</a></li>
+</ul></div></div>          
+<!--END #sidebar .aside-->
+</div>
+</div>        
+</div> <!-- closing the <div id="wrapper"> opened in header.php -->
+<footer class="footer">
+<div class="footer_widget">
+<div id="footer_widget_inside" class="footer_columns_cols_3">
+<div class="footer_widget_content"><h3 class="footer-widget-title">SUNDOG EDUCATION ONLINE LEARNING</h3>			<div class="textwidget"><p>All SunDog Education courses are very hands-on, and dive right into real exercises using the Python or Scala programming languages. We’ll mine big data to find relationships between movies, recommend movies, analyze social graphs of super-heroes, detect spam emails, search Wikipedia, and much more!</p>
+<p><strong><a href="https://sundog-education.com/about/">More about Sundog Education</a></strong></p>
+</div>
+</div><div class="footer_widget_content"><h3 class="footer-widget-title">Courses @ Udemy.com</h3><div class="menu-courses-at-udemy-com-container"><ul id="menu-courses-at-udemy-com-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-512"><a href="https://www.udemy.com/autonomous-cars-deep-learning-and-computer-vision-in-python/?couponCode=SELFDRIVING19">Autonomous Cars: Deep Learning and Computer Vision with Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-505"><a href="https://www.udemy.com/building-recommender-systems-with-machine-learning-and-ai/?couponCode=RECSYS19">Building Recommender Systems with Machine Learning and AI</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-377"><a href="https://www.udemy.com/build-a-serverless-app-with-aws-lambda-hands-on/?couponCode=LAMBDA19">Build a Serverless App with Lambda</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-378"><a href="https://www.udemy.com/the-ultimate-hands-on-hadoop-tame-your-big-data/?couponCode=HADOOP19">The Ultimate Hands-on Hadoop</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-379"><a href="https://www.udemy.com/build-a-serverless-app-with-aws-lambda-hands-on/?couponCode=LAMBDA19">Data Science, Deep Learning, Machine Learning with Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-380"><a href="https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on/?couponCode=ELASTIC19">Learn ElasticSearch6 and Elastic Stack</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-381"><a href="https://www.udemy.com/apache-spark-with-scala-hands-on-with-big-data/?couponCode=SPARKSCALAWEB">Learn Apache Spark with Scala</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-382"><a href="https://www.udemy.com/taming-big-data-with-apache-spark-hands-on/?couponCode=SPARKWEB">Taming Big Data with Apache Spark and Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-383"><a href="https://www.udemy.com/taming-big-data-with-spark-streaming-hands-on/?couponCode=STREAMINGWEB">Taming Big Data with Spark Streaming and Scala</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-384"><a href="https://www.safaribooksonline.com/search/?query=author%3A%22Frank%20Kane%22&amp;sort=relevance&amp;highlight=true">Learn Big Data on AWS / Elastic Mapreduce</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-547"><a href="https://www.udemy.com/the-ultimate-unofficial-udemy-online-course-creation-guide/?couponCode=CREATE19">The Ultimate Online Course Creation Guide</a></li>
+</ul></div></div><div class="footer_widget_content"><h3 class="footer-widget-title">Courses @ O’Reilly Safari</h3><div class="menu-courses-at-oreilly-safari-container"><ul id="menu-courses-at-oreilly-safari-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-385"><a href="https://www.safaribooksonline.com/library/view/elasticsearch-5-and/9781788995122/">Elasticsearch 5 and Elastic Stack</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-386"><a href="https://www.safaribooksonline.com/library/view/the-ultimate-hands-on/9781788478489/">The Ultimate Hands-on Hadoop</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-387"><a href="https://www.safaribooksonline.com/library/view/introduction-to-the/9781491985168/">Introduction to the Amazon Elasticsearch Service</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-388"><a href="https://www.safaribooksonline.com/library/view/analyzing-big-data/9781491985144/">Analyzing Big Data with Hadoop, AWS, and EMR</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-389"><a href="https://www.safaribooksonline.com/library/view/analyzing-big-data/9781491985120/">Analyzing Big Data with Spark and Amazon EMR</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-390"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787129931/">Taming Big Data with Apache Spark and Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-391"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787123915/">Taming Big Data with Spark Streaming and Scala</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-392"><a href="https://www.safaribooksonline.com/library/view/data-science-and/9781787127081/">Data Science and Machine Learning with Python</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-393"><a href="https://www.safaribooksonline.com/library/view/apache-spark-with/9781787129849/">Apache Spark with Scala</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-394"><a href="https://www.safaribooksonline.com/library/view/taming-big-data/9781787125568/">Taming Big Data with MapReduce and Hadoop</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-395"><a href="https://www.safaribooksonline.com/learning-paths/learning-path-data/9781491995143/">Data Analytics with Amazon’s ElasticMapReduce</a></li>
+</ul></div></div>							<div class="clr"></div>
+</div>
+</div>
+<div class="inner">
+<div class="copyright">
+Website and all course content © Copyright 2018 <a href="http://sundog-soft.com/">Sundog Software LLC</a> DBA <a href="http://sundog-education.com/">Sundog Education</a>. All rights reserved worldwide. <a href="https://sundog-education.com/blog/">Blog</a>                    
+</div>
+<div class="top_social clearfix">
+<a href="http://www.twitter.com/SundogEducation" class="twitter ntip" original-title="Follow on Twitter" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a> 		<a href="./index_files/SundogEdu" class="facebook ntip" original-title="Follow on Facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a>						<a href="https://www.linkedin.com/in/frank-kane-76443417/" class="linkedin ntip" original-title="Follow on LinkedIn" target="_blank" rel="nofollow"><i class="fa fa-linkedin"></i></a>																								 		 			</div>
+</div>
+</footer>
+</div>
+<div id="gotoTop"></div>    
+<script type="text/javascript">
+var c = document.body.className;
+c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+document.body.className = c;
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/sundog-education.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./index_files/scripts.js.Без названия"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":{"https:\/\/sundog-education.com\/data-science-and-machine-learning-course\/":[1,0,""],"https:\/\/sundog-education.com\/mapreduce-course\/":[1,0,""],"https:\/\/sundog-education.com\/apache-spark-course\/":[1,0,""],"https:\/\/sundog-education.com\/hadoop-ecosystem-course\/":[1,0,""],"https:\/\/sundog-education.com\/spark-aws-emr\/":[1,0,""],"https:\/\/sundog-education.com\/hadoop-aws-emr\/":[1,0,""],"https:\/\/sundog-education.com\/aws-lambda-course\/":[1,0,""],"https:\/\/sundog-education.com\/spark-streaming-course\/":[0,0,""],"https:\/\/sundog-education.com\/apache-spark-scala-course\/":[0,0,""]},"siteURL":"https:\/\/sundog-education.com","siteURLq":"https:\/\/sundog-education.com"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./index_files/qppr_frontend_script.min.js.Без названия"></script>
+<script type="text/javascript" src="./index_files/js.cookie.min.js.Без названия"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./index_files/woocommerce.min.js.Без названия"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_ecc93e34540dce9aa324e35ed4337124","fragment_name":"wc_fragments_ecc93e34540dce9aa324e35ed4337124"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./index_files/cart-fragments.min.js.Без названия"></script>
+<script type="text/javascript" src="./index_files/plugins.js.Без названия"></script>
+<script type="text/javascript" src="./index_files/main.js.Без названия"></script>
+<script type="text/javascript" src="./index_files/smoothscroll.js.Без названия"></script>
+<script type="text/javascript" src="./index_files/wp-embed.min.js.Без названия"></script>
+
+</body></html>
