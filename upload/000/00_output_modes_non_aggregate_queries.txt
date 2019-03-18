@@ -2,4 +2,14 @@ val userSchema = new StructType()
 .add("savedttm", "string")
 .add("device", "string")
 .add("gt", "string")
-
+
+val stream = iot_key_val.writeStream
+  .format("kafka")
+  .option("kafka.bootstrap.servers", 
+"ip-1172-31-41-26.ec2.internal:9092")
+.option("topic", "airport-bigdata-sink")
+.option("checkpointLocation", 
+"hdfs://ip-172-31-35-67.ec2.internal:8020/user/vasya/stream/chkpt")
+.outputMode("append")
+.start()
+
