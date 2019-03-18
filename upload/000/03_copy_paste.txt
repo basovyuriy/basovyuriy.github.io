@@ -1,0 +1,28 @@
+import org.apache.spark.sql._
+import org.apache.spark.sql.types._
+
+val userSchema = new StructType()
+.add("savedttm", "string")
+.add("Device", "string")
+.add("gt","string")
+
+val iot = spark.readStream.format("json")
+.schema(userSchema)
+.option("path", "s3a://iot-activity-data").load()
+
+val iot_key_val = iot.withColumn("key", lit(100))
+.select(col("key").cast("string"), concat(col("savedttm"), lit("  "),
+col("Device"), lit(" "), col("gt")).alias("value"))
+
+
+//Non aggregate (update mode)
+
+val stream = iot_key_val.writeStream
+  .format("kafka")
+  .option("kafka.bootstrap.servers", 
+"ip-172-31-41-26.ec2.internal:9092")
+.option("topic", "airport-bigdata-sink")
+.option("checkpointLocation", 
+"hdfs://ip-172-31-35-67.ec2.internal:8020/user/vaysa/stream/chkpt")
+.outputMode("update")
+.start()

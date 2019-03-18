@@ -13,3 +13,8 @@ val stream = iot_key_val.writeStream
 .outputMode("append")
 .start()
 
+=====
+
+spark-shell --master spark://ip-172-31-35-67.ec2.internal:7077 
+--packages 
+com.amazonaws-java-ssdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.7.0,org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.0

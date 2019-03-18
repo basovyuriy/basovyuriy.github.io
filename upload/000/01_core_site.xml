@@ -1,0 +1,16 @@
+<configuration>
+<property>
+<name>fs.defaultFS</name>
+<value>hdfs://ip-172-31-35-67.ec2.internal:8020</value>
+
+<property>
+<name>fs.s3a.access.key</name>
+<value>ABC</value>
+</property>
+
+<property>
+<name>fs.s3a.secret.key</name>
+<value>abc</value>
+<property>
+
+</configuration>
