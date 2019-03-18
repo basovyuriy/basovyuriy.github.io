@@ -1,0 +1,5 @@
+val userSchema = new StructType()
+.add("savedttm", "string")
+.add("device", "string")
+.add("gt", "string")
+
