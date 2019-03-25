@@ -1,0 +1,4 @@
+{"fromdttm":"2019-01-01 20:10:00.999","todttm":"2019-01-01 23:10:00.999", "company": "aeroflot","device": "boeing-800","stand":1,"sit":160,"gateway": "a3"}
+{"fromdttm":"2019-01-01 20:15:00.999","todttm":"2019-01-01 23:15:00.999", "company": "aeroflot","device": "boeing-800","stand":2,"sit":170,"gateway": "b3"}
+{"fromdttm":"2019-01-01 20:25:00.999","todttm":"2019-01-01 23:25:00.999", "company": "aeroflot","device": "boeing-800","stand":3,"sit":180,"gateway": "c3"}
+{"fromdttm":"2019-01-01 20:30:00.999","todttm":"2019-01-01 23:30:00.999", "company": "aeroflot","device": "boeing-800","stand":4,"sit":190,"gateway": "d3"}

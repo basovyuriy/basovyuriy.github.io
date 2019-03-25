@@ -1,0 +1,87 @@
+Программа курса
+1.	Введение в Apache Spark
+Сравнение Hadoop и Spark
+Сравнение Batch, Real-Time и in-Memory  процессинг
+Особенности Apache Spark 
+Компоненты Apache Spark экосистемы 
+
+2.	Введение в RDD - Resilient Distributed Dataset
+Что такое RDD  
+Особенности использования RDD, RDD lineage
+Трансформация в Spark RDD
+Lazy evaluation и отказоустойчивость в Spark
+Использование Persistence RDD в памяти и на диске
+Использование key-value пар (ReduceByKey,CountByKey,SortByKey,AggregateByKey)
+Интеграция Hadoop с Spark
+
+3.	Запуск задач в Apache Spark
+Знакомство с Spark-shell
+Выполнение задач в Apache Spark
+Написание программ в Apache Spark
+Чтение данных с локальной файловой системы и HDFS  
+Зависимости(Dependencies)
+Кэширование данных в Apache Spark
+Отказоустойчивость (Fault Tolerance) 
+
+4.	SparkSQL, DataFrames, DataSet
+Альтернатива RDDs
+Сравнение DataFrame, DataSet и SQL API
+Введение  в SparkSQL, пользовательские функции в Spark SQL
+Использование DataFrames и DataSet, DataSets вместо RDD 
+Простые запросы, фильтрация и аггрегация DataFrames
+Объединение (JOIN) DataFrames
+Интеграция Hive и Spark: Hive запросы в Spark, создание Hive контекста, запись Dataframe в Hive
+
+5.	Управление ресурсами в кластере Apache Spark
+Архитектура Apache Spark 
+Особенности управления ресурсами в автономном режиме кластера (Standalone)
+Особенности управления ресурсами в режиме Hadoop кластера с YARN
+Динамическое распределение ресурсов Dynamic Resource Allocation
+Оптимизация Apache Spark: использование разделов (partition hash,range,map, static), управление расписанием (dynamic, fair scheduler), использование переменных (shared, broadcast) и аккумуляторов (accumulators).  
+Использование Catalyst Optimizer для оптимизации исполнения запросов
+Project Tungsten - Оптимизация управления памятью и кэшом CPU
+
+6.	Машинное обучение(Machine Learning) в Apache Spark 
+Введение в  Machine Learning с использованием MLLib
+Алгоритм линейной регрессии (Linear Regression)
+Деревья решений (Decision Trees)
+Случайные леса (Random Forest)
+Использование DataFrames с MLLib 
+
+7.	Потоковая обработка (Streaming) в Apache Spark
+Потоковая обработка данных для аналитики больших данных
+Особенности реализации потоковой обработки данных в Apache Spark
+Основные концепции потоковой обработки
+Аггрегированные и не аггрегированные запросы
+Обработка событий Event Time, Window и Late Events (скользящее окно событий)
+Поддержка последних событий (Late Events) в потоковой обработке данных в Apache Spark
+Режимы работы Apache Spark с потоковыми данными 
+
+      8. Введение в GraphX
+	GraphX и Pregel
+	Поиск в ширину (Breadth-First-Search) с использование GraphX 
+
+
+====== Лабароторная ========
+
+1. Заходим на KZS-00 , на hdfs есть файлы, забираем их себе в /home/user/spark-workshop
+
+2. Пробный запуск spark-shell --master yarn (лого, сразу выход)
+
+3. hadoop fs -rm -f /user/vasya/stream/chkpt
+
+4. kafka-console-consumer --bootstrap-server ip-172-31-41-26.ec2.internal:9092 --topic airport-bigdata-sink
+
+5. spark-shell 02_copy-paste.txt (:paste ^D запуск append output mode и non-aggregate queries)
+
+6. upload 1-stand.json (s7)
+
+7. upload 2-sit.json (pobeda)
+
+8. смотрим consumer (видим и stand и sit) 
+
+9. upload 3-stairsdown.json (aeroflot)
+
+10. смотрим consumer (видим aeroflot, это был append output mode и non-aggregate queries - важно МЕНЯТЬ ЗНАЧЕНИЯ НЕЛЬЗЯ, только добавлять) 
+
+11. spark-shell 02_copy-paste.txt (:paste ^D)

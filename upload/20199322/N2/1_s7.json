@@ -1,0 +1,4 @@
+{"fromdttm":"2019-01-01 20:10:00.999","todttm":"2019-01-01 23:10:00.999", "company": "s7","device": "boeing-747","stand":100,"sit":16,"gateway": "a3"}
+{"fromdttm":"2019-01-01 20:15:00.999","todttm":"2019-01-01 23:15:00.999", "company": "s7","device": "boeing-747","stand":110,"sit":17,"gateway": "b3"}
+{"fromdttm":"2019-01-01 20:25:00.999","todttm":"2019-01-01 23:25:00.999", "company": "s7","device": "boeing-747","stand":120,"sit":18,"gateway": "a3"}
+{"fromdttm":"2019-01-01 20:30:00.999","todttm":"2019-01-01 23:30:00.999", "company": "s7","device": "boeing-747","stand":130,"sit":19,"gateway": "b3"}

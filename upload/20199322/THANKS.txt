@@ -1,0 +1,5 @@
+https://courses.hadoopinrealworld.com/courses/319237/lectures/6834861
+
+https://www.udemy.com/apache-spark-with-scala-hands-on-with-big-data/learn/v4/content
+
+https://medium.com/teads-engineering/spark-performance-tuning-from-the-trenches-7cbde521cf60
